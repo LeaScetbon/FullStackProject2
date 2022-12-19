@@ -163,8 +163,8 @@ window.onload = function() {
           };
           
           function Player(pos) {
-              this.pos = pos.plus(new Vector(0, -.5));
-              this.size = new Vector(.5, 1);
+              this.pos = pos.plus(new Vector(0, -.5));  //position in the start
+              this.size = new Vector(.5, 1);  //largeur,longeur
               this.speed = new Vector(0, 0);
           }
           Player.prototype.type = "player";
