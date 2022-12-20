@@ -1,0 +1,56 @@
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+    background:url("images/gaming.jfif");;
+}
+
+body{
+	margin:0;
+	color:#6a6f8c;
+	background:#c8c8c8;
+	font:600 16px/18px 'Open Sans',sans-serif;
+}
+
+.parent {
+    /* display: flex; */
+    flex-wrap: wrap; 
+    align-content: space-around;
+    width:100%;
+	margin:auto;
+	max-width:2000px;
+	min-height:750px;
+	position:relative;
+	background:url("images/gaming.jfif") ;
+  background: rgba(40,57,101,.9);
+  align-items: center;
+  
+justify-content: center;
+	
+}
+
+
+h1{
+   clear:both;
+}
+
+table{
+    color: aliceblue;
+   overflow: auto;
+    padding: 5px;
+    
+}
+table.TableScore { 
+    border: 1px solid DarkOrange;
+    border-radius: 13px; 
+    border-spacing: 0;
+    }
+  table.TableScore td, 
+  table.TableScore th { 
+    border-bottom: 1px solid DarkOrange;
+    padding: 10px; 
+    }
+  table.TableScore tr:last-child > td {
+    border-bottom: none;
+  }

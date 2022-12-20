@@ -23,16 +23,13 @@ function store(){
     
 
     if(name.value.length == 0){
-        alert('Please fill in email');
+        alert('Please fill in name');
 
     }else if(pw.value.length == 0){
         alert('Please fill in password');
 
     }else if(name.value.length == 0 && pw.value.length == 0){
-        alert('Please fill in email and password');
-
-    // }else if(pw.value.length > 8){
-    //     alert('Max of 8');
+        alert('Please fill in name and password');
 
     }else if(!pw.value.match(numbers)){
         alert('please add 1 number');
@@ -47,15 +44,6 @@ function store(){
         alert('passwords do not match');
     }
     else{
-        // users.push(name.value);
-        // users.push(pw.value);
-        // localStorage.setItem(`User${counter()}`,users);
-
-        // localStorage.setItem(`User${counter()}`, JSON.stringify({
-        //     Name:  name.value,
-        //     password: pw.value,
-           
-        // }));
         
         
         localStorage.setItem(name.value, pw.value);
@@ -79,20 +67,12 @@ function check(){
 
 
     if(userName.value != 'undefined' && userPw.value == storedPw ){
-        alert('You are logged in.');
+        localStorage.setItem('current user', userName.value);
+        window.open("home_screen.html");
+        
     }else{
         alert('Error on login');
     }
 
-
-    // for(let i=1;i<localStorage.length;i++){
-    //     var value = localStorage.getItem(`User${i}`);
-    //     if(value.Name==userName.value && value.password){
-    //         alert('You are logged in.');
-    //     }else{
-    //         alert('Error on login');
-    //     }
-
-    // }
 }
 

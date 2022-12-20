@@ -1,3 +1,11 @@
+let score = 0;
+
+function drawScore() {
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#0095DD";
+  ctx.fillText(`Score: ${score}`, 8, 20);
+}
+
 window.onload = function() {
     runGame(LEVELS, DOMDisplay);
 }
@@ -494,14 +502,17 @@ window.onload = function() {
           function runGame(plans, Display) {
             function startLevel(n) {
               runLevel(new Level(plans[n]), Display, function(status) {
-                if (status == "lost")
+                if (status == "lost"){
                   startLevel(n);
-                else if (n < plans.length - 1)
+                  localStorage.setItem(`score platformer ${localStorage.getItem('current user')}`,`level ${n}`);
+                }else if (n < plans.length - 1){
                   startLevel(n + 1);
-                else
+                  localStorage.setItem(`score platformer ${localStorage.getItem('current user')}`,`level ${n+1}`);
+                }else
                   alert("You win!");
               });
             }
+            
             startLevel(0);
           }
           
