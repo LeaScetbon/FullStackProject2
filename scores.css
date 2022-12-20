@@ -8,11 +8,26 @@
 
 body{
 	margin:0;
-	color:#6a6f8c;
+	color:#f9fafe;
 	background:#c8c8c8;
 	font:600 16px/18px 'Open Sans',sans-serif;
+  
 }
 
+.BorderText{
+    
+   text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
+
+}
+.InBorder{
+  border-radius: 25px;
+  border: 2px solid #4a4a47;
+  background-color: rgba(0, 0, 0, 0.733);
+  padding: 10px;
+
+  /* width:50%; */
+  /* height: 150px; */
+}
 .parent {
     /* display: flex; */
     flex-wrap: wrap; 
@@ -30,27 +45,14 @@ justify-content: center;
 	
 }
 
-
 h1{
+  color:#6a6f8c;
    clear:both;
+   text-align: center;
 }
 
-table{
-    color: aliceblue;
-   overflow: auto;
-    padding: 5px;
-    
+h2{
+  color:#6a6f8c;
+  text-align: center;
 }
-table.TableScore { 
-    border: 1px solid DarkOrange;
-    border-radius: 13px; 
-    border-spacing: 0;
-    }
-  table.TableScore td, 
-  table.TableScore th { 
-    border-bottom: 1px solid DarkOrange;
-    padding: 10px; 
-    }
-  table.TableScore tr:last-child > td {
-    border-bottom: none;
-  }
+
