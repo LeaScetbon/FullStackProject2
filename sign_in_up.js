@@ -5,6 +5,7 @@ function store(){
 
     var name = document.getElementById('name');
     var pw = document.getElementById('pw');
+    var repeatpw=document.getElementById('repeat_pw');
     var lowerCaseLetters = /[a-z]/g;
     var upperCaseLetters = /[A-Z]/g;
     var numbers = /[0-9]/g;
@@ -30,7 +31,10 @@ function store(){
     }else if(!pw.value.match(lowerCaseLetters)){
         alert('please add 1 lovercase letter');
 
-    }else{
+    }else if(pw.value!=repeatpw.value){
+        alert('passwords do not match');
+    }
+    else{
         localStorage.setItem('name', name.value);
         localStorage.setItem('pw', pw.value);
         alert('Your account has been created');
@@ -42,13 +46,17 @@ function check(){
     var storedName = localStorage.getItem('name');
     var storedPw = localStorage.getItem('pw');
 
+
     var userName = document.getElementById('userName');
     var userPw = document.getElementById('userPw');
+    
     var userRemember = document.getElementById("rememberMe");
 
-    if(userName.value == storedName && userPw.value == storedPw){
+   
+    if(userName.value == storedName && userPw.value == storedPw ){
         alert('You are logged in.');
     }else{
         alert('Error on login');
     }
 }
+
