@@ -1,6 +1,17 @@
 
 
 
+
+//localStorage.setItem('i', 1);
+// var users=[];
+// function counter(){
+//     var j=Number(localStorage.getItem('i'));
+//     j+=1;
+//     console.log(j);
+//     localStorage.setItem('i', j);
+    
+//     return j;
+// }
 function store(){
 
     var name = document.getElementById('name');
@@ -9,18 +20,16 @@ function store(){
     var lowerCaseLetters = /[a-z]/g;
     var upperCaseLetters = /[A-Z]/g;
     var numbers = /[0-9]/g;
+    
 
     if(name.value.length == 0){
-        alert('Please fill in email');
+        alert('Please fill in name');
 
     }else if(pw.value.length == 0){
         alert('Please fill in password');
 
     }else if(name.value.length == 0 && pw.value.length == 0){
-        alert('Please fill in email and password');
-
-    // }else if(pw.value.length > 8){
-    //     alert('Max of 8');
+        alert('Please fill in name and password');
 
     }else if(!pw.value.match(numbers)){
         alert('please add 1 number');
@@ -35,29 +44,36 @@ function store(){
         alert('passwords do not match');
     }
     else{
-        localStorage.setItem('name', name.value);
-        localStorage.setItem('pw', pw.value);
+        
+        
+        localStorage.setItem(name.value, pw.value);
         alert('Your account has been created');
     }
 }
 
 //checking
 function check(){
-    var storedName = localStorage.getItem('name');
-    var storedPw = localStorage.getItem('pw');
+    //var storedName = localStorage.getItem('name');
+    //var storedPw = localStorage.getItem('pw');
 
 
     var userName = document.getElementById('userName');
     var userPw = document.getElementById('userPw');
+
+    var storedPw = localStorage.getItem(userName.value);
+
     
     var userRemember = document.getElementById("rememberMe");
 
-   
-    if(userName.value == storedName && userPw.value == storedPw ){
-        window.open("home_screen.html")
+
+    if(userName.value != 'undefined' && userPw.value == storedPw ){
+        localStorage.setItem('current user', userName.value);
+        window.open("home_screen.html");
+        
     }else{
         alert('Error on login');
     }
+
 }
 
 //cookies

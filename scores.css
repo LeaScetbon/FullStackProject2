@@ -1,0 +1,58 @@
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+    background:url("images/gaming.jfif");;
+}
+
+body{
+	margin:0;
+	color:#f9fafe;
+	background:#c8c8c8;
+	font:600 16px/18px 'Open Sans',sans-serif;
+  
+}
+
+.BorderText{
+    
+   text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
+
+}
+.InBorder{
+  border-radius: 25px;
+  border: 2px solid #4a4a47;
+  background-color: rgba(0, 0, 0, 0.733);
+  padding: 10px;
+
+  /* width:50%; */
+  /* height: 150px; */
+}
+.parent {
+    /* display: flex; */
+    flex-wrap: wrap; 
+    align-content: space-around;
+    width:100%;
+	margin:auto;
+	max-width:2000px;
+	min-height:750px;
+	position:relative;
+	background:url("images/gaming.jfif") ;
+  background: rgba(40,57,101,.9);
+  align-items: center;
+  
+justify-content: center;
+	
+}
+
+h1{
+  color:#6a6f8c;
+   clear:both;
+   text-align: center;
+}
+
+h2{
+  color:#6a6f8c;
+  text-align: center;
+}
+
