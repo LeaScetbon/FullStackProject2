@@ -83,12 +83,30 @@ function check(){
 function setCookie(name, value, daysToLive) {
     const date = new Date();
     date.setTime(date.getTime() + (daysToLive * 24 * 60 * 60 * 1000));
-    let expires = "expires="+d.toUTCString();
+    let expires = "expires="+date.toUTCString();
     document.cookie = name + "=" + value + ";" + daysToLive + ";path=/";
   }
 
   setCookie("email","scetbonlea@gmail.com", 365),
-  console.log(document.cookie);
+  console.log(getCookies("email"));
+
+  function deleteCookie(name){
+    setCookies(name,null,null);
+  }
+
+  function getCookies(name){
+    const cDecoded = decodeURIComponent(document.cookies);
+    const cArray = cDecoded.split("; ");
+    let result;
+
+    cArray.forEach(element=> {
+        if(element.indexOf(name) == 0){
+        result = element.substring(name.length + 1)
+    }
+
+  })
+  return result;
+}
   
   
   
