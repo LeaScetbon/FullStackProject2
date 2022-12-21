@@ -47,4 +47,18 @@ body{
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
 
+.title{
+  margin:0;
+	color:#6a6f8c;
+	background:#c8c8c8;
+	font:600 16px/18px 'Open Sans',sans-serif;
+  background: rgba(40,57,101,.9);
+  text-align: center;
+
+}
+
+.image:hover {
+  transform: scale(1.5);
+}
+
 
