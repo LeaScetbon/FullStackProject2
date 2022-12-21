@@ -19,28 +19,29 @@ function show_scores(){
         var key=localStorage.key(i);
         var name=key.split(" ");
         if(key.startsWith('score platformer')){
-            score_platformer+=`${name[name.length-1]}: ${localStorage.getItem(key)}`;
+            score_platformer.push(`${name[name.length-1]}: ${localStorage.getItem(key)}`);
             
             // document.write(key+": "+ localStorage.getItem(key));
             // document.write('<br>');
         }
         if(key.startsWith('score 2048')){
-            score_2048+=`${name[name.length-1]}: ${localStorage.getItem(key)}`;
+            score_2048.push(`${name[name.length-1]}: ${localStorage.getItem(key)}`);
             
             // document.write(key+": "+ localStorage.getItem(key));
             // document.write('<br>');
         }
         
     }
+
     document.write('<center>');
     document.write('<h2>scores platformer</h2>');
     for(let i=0;i<score_platformer.length;i++){
-         document.write(score_platformer[i]);
+         document.write(score_platformer[i]+'<br>');
     }
-
     document.write('<h2>scores 2048</h2>');
     for(let i=0;i<score_2048.length;i++){
-        document.write(score_2048[i]);
+        document.write(score_2048[i]+'<br>');
+        
     }
     document.write('</center>');
     
