@@ -60,3 +60,7 @@ function check(){
     }
 }
 
+//cookies
+.cookie = "username=scetbonlea@gmail.com; expires=Thu, 5 Jan 2023 12:00:00 UTC";
+console.log(document.cookie);
+
