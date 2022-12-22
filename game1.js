@@ -7,6 +7,7 @@ function drawScore() {
 }
 
 window.onload = function() {
+
     runGame(LEVELS, DOMDisplay);
 }
 
@@ -528,6 +529,11 @@ window.onload = function() {
           
           function runGame(plans, Display) {
             function startLevel(n) {
+              var obj=window.localStorage.getItem('current user');       
+              var newobj=JSON.parse(window.localStorage.getItem(obj));
+              console.log( newobj.number_of_times_played_Platformer);
+              newobj.number_of_times_played_Platformer+=1;
+              localStorage.setItem(obj, JSON.stringify(newobj));
               runLevel(new Level(plans[n]), Display, function(status) {
                 if (status == "lost"){
                   startLevel(n);
@@ -536,13 +542,12 @@ window.onload = function() {
                   startLevel(n + 1);
                   
                   var obj=window.localStorage.getItem('current user');
-                  //console.log(obj);
+                  
                   var newobj=JSON.parse(window.localStorage.getItem(obj));
-                  //console.log(newobj);
+                 
                   newobj.score_Platformer=`level ${n+1}`;
-                  // console.log(newobj);
+                  
                   localStorage.setItem(obj, JSON.stringify(newobj));
-                  //localStorage.setItem(`score platformer ${localStorage.getItem('current user')}`,`level ${n+1}`);
                 }else
                   alert("You win!");
               });

@@ -49,7 +49,10 @@ function store(){
             pw: pw.value,
             datetime: datetime,
             score_2048:0,
-            score_Platformer:0
+            score_Platformer:0,
+            number_of_times_played_Platformer:0,
+            number_of_times_played_2048:0
+
         };
 
         localStorage.setItem(email.value, JSON.stringify(User));
@@ -77,14 +80,14 @@ function check(){
 
     console.log(userEmail.value);
     console.log(userPw.value);
-    
+    console.log(obj);
 
     if(userEmail.value != 'undefined' && userPw.value == obj.pw ){
         localStorage.setItem('current user', userEmail.value);
         var newDate = new Date();
         var datetime =newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
         obj.datetime=datetime;
-        localStorage.setItem(userName.value, JSON.stringify(obj));
+        localStorage.setItem(userEmail.value, JSON.stringify(obj));
         window.open("home_screen.html");
         
     }else{

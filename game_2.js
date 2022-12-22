@@ -4,6 +4,10 @@ var rows = 4;
 var columns = 4;
 
 window.onload = function() {
+    var obj=window.localStorage.getItem('current user');       
+    var newobj=JSON.parse(window.localStorage.getItem(obj));
+    newobj.number_of_times_played_2048+=1;
+    localStorage.setItem(obj, JSON.stringify(newobj));
     setGame();
 }
 
