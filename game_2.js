@@ -70,7 +70,7 @@ document.addEventListener('keyup', (e) => {
         setTwo();
     }
     document.getElementById("score").innerText = score;
-    localStorage.setItem(`score 2048 ${localStorage.getItem('current user')}`,score);
+    
 })
 
 function filterZero(row){
@@ -85,7 +85,14 @@ function slide(row) {
             row[i] *= 2;
             row[i+1] = 0;
             score += row[i];
-            localStorage.setItem(`score 2048 ${localStorage.getItem('current user')}`,score);
+            var obj=window.localStorage.getItem('current user');
+            //console.log(obj);
+            var newobj=JSON.parse(window.localStorage.getItem(obj));
+            //console.log(newobj);
+            newobj.score_2048=score;
+            // console.log(newobj);
+            localStorage.setItem(obj, JSON.stringify(newobj));
+            //localStorage.setItem(`score 2048 ${localStorage.getItem('current user')}`,score);
         }
     } //[4, 0, 2]
     row = filterZero(row); //[4, 2]

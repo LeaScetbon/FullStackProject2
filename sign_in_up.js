@@ -2,19 +2,16 @@
 
 
 
-//localStorage.setItem('i', 1);
-// var users=[];
-// function counter(){
-//     var j=Number(localStorage.getItem('i'));
-//     j+=1;
-//     console.log(j);
-//     localStorage.setItem('i', j);
-    
-//     return j;
-// }
+  
+  
+// let newObject = window.localStorage.getItem("myObject");
+// console.log(JSON.parse(newObject));
+
+
 function store(){
 
     var name = document.getElementById('name');
+    var email=document.getElementById('email');
     var pw = document.getElementById('pw');
     var repeatpw=document.getElementById('repeat_pw');
     var lowerCaseLetters = /[a-z]/g;
@@ -44,9 +41,20 @@ function store(){
         alert('passwords do not match');
     }
     else{
+        var newDate = new Date();
+        var datetime =newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
+        console.log(datetime);
+        var User = {
+            name:name.value,
+            pw: pw.value,
+            datetime: datetime,
+            score_2048:0,
+            score_Platformer:0
+        };
+
+        localStorage.setItem(email.value, JSON.stringify(User));
         
-        
-        localStorage.setItem(name.value, pw.value);
+        //localStorage.setItem(name.value, pw.value);
         alert('Your account has been created');
     }
 }
@@ -57,17 +65,26 @@ function check(){
     //var storedPw = localStorage.getItem('pw');
 
 
-    var userName = document.getElementById('userName');
+    var userEmail = document.getElementById('userMail');
     var userPw = document.getElementById('userPw');
 
-    var storedPw = localStorage.getItem(userName.value);
+    //var storedPw = localStorage.getItem(userName.value);
+    //var storedPw = window.localStorage.getItem(userName.value);
+    var obj=JSON.parse(window.localStorage.getItem(userEmail.value));
+    console.log(obj);
 
-    
     var userRemember = document.getElementById("rememberMe");
 
+    console.log(userEmail.value);
+    console.log(userPw.value);
+    
 
-    if(userName.value != 'undefined' && userPw.value == storedPw ){
-        localStorage.setItem('current user', userName.value);
+    if(userEmail.value != 'undefined' && userPw.value == obj.pw ){
+        localStorage.setItem('current user', userEmail.value);
+        var newDate = new Date();
+        var datetime =newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
+        obj.datetime=datetime;
+        localStorage.setItem(userName.value, JSON.stringify(obj));
         window.open("home_screen.html");
         
     }else{

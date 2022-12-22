@@ -19,13 +19,13 @@ window.onload = function() {
              "                                                                                ",
              "                                                                  xxx           ",
              "                                                   xx      xx    xx!xx          ",
-             "                                    o o      xx                  x!!!x          ",
+             "                                             xx                  x!!!x          ",
              "                                                                 xx!xx          ",
              "                                   xxxxx                          xvx           ",
              "                                                                            xx  ",
              "  xx                                      o o                                x  ",
              "  x                     o                                                    x  ",
-             "  x                                      xxxxx                             o x  ",
+             "  x                                      xxxxx                               x  ",
              "  x          xxxx       o                                                    x  ",
              "  x  @       x  x                                                xxxxx       x  ",
              "  xxxxxxxxxxxx  xxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxx     xxxxxxx   xxxxxxxxx  ",
@@ -531,10 +531,18 @@ window.onload = function() {
               runLevel(new Level(plans[n]), Display, function(status) {
                 if (status == "lost"){
                   startLevel(n);
-                  localStorage.setItem(`score platformer ${localStorage.getItem('current user')}`,`level ${n}`);
+                 
                 }else if (n < plans.length - 1){
                   startLevel(n + 1);
-                  localStorage.setItem(`score platformer ${localStorage.getItem('current user')}`,`level ${n+1}`);
+                  
+                  var obj=window.localStorage.getItem('current user');
+                  //console.log(obj);
+                  var newobj=JSON.parse(window.localStorage.getItem(obj));
+                  //console.log(newobj);
+                  newobj.score_Platformer=`level ${n+1}`;
+                  // console.log(newobj);
+                  localStorage.setItem(obj, JSON.stringify(newobj));
+                  //localStorage.setItem(`score platformer ${localStorage.getItem('current user')}`,`level ${n+1}`);
                 }else
                   alert("You win!");
               });

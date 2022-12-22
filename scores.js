@@ -4,10 +4,62 @@
 // heading.textContent ='Replacement heading text';
 
 function Hi(){
-    document.write(`<h1>Hi ${localStorage.getItem('current user')}</h1>`);
+    var key=localStorage.getItem('current user');
+    var name=key.split("@");
+    document.write(`<h1>Hi ${name[0]}</h1>`);
 
+    //document.write(`<h1>Hi ${localStorage.getItem('current user')}</h1>`);
+}
+function score_platformer(){
+    score_platformer=[];
+    for(let i=0;i<localStorage.length;i++){
+        var key=localStorage.key(i);
+        if(key.includes('@')){
+            var name=key.split("@");
+            var obj=window.localStorage.getItem(key); 
+            console.log(obj);
+            var newobj=JSON.parse(window.localStorage.getItem(obj));   
+            console.log(newobj);
+            console.log(newobj.name);
+            console.log(newobj.pw);
+
+            console.log(newobj.score_Platformer);
+            score_platformer.push(`${newobj.name}: ${newobj.score_Platformer}`);
+            
+        }
+    }
+    document.write('<center>');
+    document.write('<h2>scores platformer</h2>');
+    for(let i=0;i<score_platformer.length;i++){
+         document.write(score_platformer[i]+'<br>');
+    }
+    document.write('</center>');
 }
 
+function score_2048(){
+    score_platformer=[];
+    for(let i=0;i<localStorage.length;i++){
+        var key=localStorage.key(i);
+        if(key.includes('@')){
+            
+            var obj=window.localStorage.getItem('current user'); 
+ 
+            var newobj=JSON.parse(window.localStorage.getItem(obj));   
+
+            score_2048.push(`${newobj.name}: ${newobj.score_2048}`);
+            
+        }
+    }
+    document.write('<center>');
+    
+    document.write('<h2>scores 2048</h2>');
+    for(let i=0;i<score_2048.length;i++){
+        document.write(score_2048[i]+'<br>');
+        
+    }
+    document.write('</center>');
+
+}
 function show_scores(){
    // document.write(`<h1>Hi ${localStorage.getItem('current user')}</h1>`);
     //document.write(markup);
@@ -30,6 +82,7 @@ function show_scores(){
             // document.write(key+": "+ localStorage.getItem(key));
             // document.write('<br>');
         }
+        
         
     }
 
