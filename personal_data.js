@@ -11,13 +11,12 @@ function show_personal_info(){
     var newobj=JSON.parse(window.localStorage.getItem(key));
     console.log(newobj);
     //document.getElementById("obj").innerHTML=newobj.name;
-    document.write(`<p>Email: ${key}</p>`);
-    document.write(`<p>password: ${newobj.pw}</p>`);
-    document.write(`<p>Last connexion: ${newobj.datetime}</p>`);
-    document.write(`<p>Your score 2048: ${newobj.score_2048}</p>`);
-    document.write(`<p>Your score platformer: ${newobj.score_Platformer}</p>`);
-    document.write(`<p>You have played the game 2048  ${newobj.number_of_times_played_2048} times</p>`);
-    document.write(`<p>You have played the game platformer  ${newobj.number_of_times_played_Platformer} times</p>`);
+    document.write(`<p><h3>Email:</h3> ${key}</p>`);
+    document.write(`<p><h3>Last connexion:</h3> ${newobj.datetime}</p>`);
+    document.write(`<p><h3>Your score 2048:</h3> ${newobj.score_2048}</p>`);
+    document.write(`<p><h3>Your score platformer:</h3> ${newobj.score_Platformer}</p>`);
+    document.write(`<p><h3>You have played the game 2048 </h3> ${newobj.number_of_times_played_2048} times</p>`);
+    document.write(`<p><h3>You have played the game platformer</h3>  ${newobj.number_of_times_played_Platformer} times</p>`);
 
 
 

@@ -27,7 +27,7 @@ body{
 
   margin: auto;
   
-  width:40%;
+  width:50%;
   
 }
 .parent {
@@ -58,8 +58,13 @@ h2{
   text-align: center;
 }
 
+h3{
+  color:#6a6f8c;
+  text-align: left;
+}
+
 p{
   color:#a6accb;
-  text-align: center;
+  text-align:left;
 
 }
