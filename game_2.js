@@ -4,8 +4,13 @@ var rows = 4;
 var columns = 4;
 
 window.onload = function() {
-    var obj=window.localStorage.getItem('current user');       
-    var newobj=JSON.parse(window.localStorage.getItem(obj));
+    var obj=window.localStorage.getItem('current user');  
+    console.log(obj)
+    console.log(window.localStorage.getItem(obj))
+    // var newobj=JSON.parse(window.localStorage.getItem(obj));
+    var newobj=window.localStorage.getItem(obj)
+    console.log(typeof(newobj))
+    console.log(newobj)
     newobj.number_of_times_played_2048+=1;
     localStorage.setItem(obj, JSON.stringify(newobj));
     setGame();
@@ -186,6 +191,7 @@ function setTwo() {
             tile.classList.add("x2");
             found = true;
         }
+        
     }
 }
 

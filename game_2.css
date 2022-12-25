@@ -1,6 +1,13 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+    margin:0;
+	color:#6a6f8c;
+	background: rgba(40,57,101,.9);
+	font:600 16px/18px 'Open Sans',sans-serif;
+  text-align: center;
+}
+.page{
+    
+    background:url("images/gaming.jfif") ;
 }
 
 hr {
@@ -35,66 +42,68 @@ hr {
 /* colored tiles */
 
 .x2 {
-    background-color: #eee4da;
+    background-color:#E6E6FA;
     color: #727371;
+    border-radius: 50%;
 }
 
 .x4 {
-    background-color: #ece0ca;
+    background-color:#DDA0DD;
     color: #727371;
+    border-radius: 50%;
 }
 
 .x8 {
-    background-color: #f4b17a;
+    background-color:#DA70D6;
     color: white;
+    border-radius: 50%;
 }
 
 .x16{
-    background-color: #f59575;
+    background-color:#FF00FF;
     color: white;
+    border-radius: 50%;
 }
 
 .x32{
-    background-color: #f57c5f;
+    background-color:#BA55D3;
     color: white;
+    border-radius: 50%;
 }
 
 .x64{
-    background-color: #f65d3b;
+    background-color:#9370DB;
     color: white;
+    border-radius: 50%;
 }
 
 .x128{
-    background-color: #edce71;
+    background-color: #8A2BE2;
     color: white;
+    border-radius: 50%;
 }
 
 .x256{
-    background-color: #edcc63;
+    background-color: #0000FF;
     color: white;
+    border-radius: 50%;
 }
 
 .x512{
-    background-color: #edc651;
+    background-color:#1E90FF;
     color: white;
+    border-radius: 50%;
 }
 
 .x1024{
-    background-color: #eec744;
+    background-color:#00BFFF;
     color: white;
+    border-radius: 50%;
 }
 
 .x2048{
-    background-color: #ecc230;
+    background-color:#87CEFA;
     color: white;
+    border-radius: 50%;
 }
 
-.x4096 {
-    background-color: #fe3d3d;
-    color: white;
-}
-
-.x8192 {
-    background-color: #ff2020;
-    color: white;
-}
