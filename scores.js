@@ -3,9 +3,8 @@ let currentUser=window.localStorage.getItem("current user").split('@')[0];
 
 function Hi(){
     var key=localStorage.getItem('current user');
-    var name=key.split("@");
-    document.write(`<h1>Hi ${name[0]}</h1>`);
-
+    var name=JSON.parse(window.localStorage.getItem(key)).name;
+    document.write(`<h1>Hi ${name}</h1>`);
 }
 function score_platformer(){
     score_platformerList=[];

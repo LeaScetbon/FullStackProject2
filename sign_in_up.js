@@ -82,13 +82,24 @@ function check(){
     console.log(userPw.value);
     console.log(obj);
 
-    if(userEmail.value != 'undefined' && userPw.value == obj.pw ){
-        localStorage.setItem('current user', userEmail.value);
-        var newDate = new Date();
-        var datetime =newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
-        obj.datetime=datetime;
-        localStorage.setItem(userEmail.value, JSON.stringify(obj));
-        window.open("home_screen.html");
+    if(userEmail.value != 'undefined' && obj!=null){
+        if( userPw.value == obj.pw ){
+            localStorage.setItem('current user', userEmail.value);
+            var newDate = new Date();
+            var datetime =newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
+            console.log(datetime);
+            console.log(obj.name);
+            console.log(obj.name.value);
+    
+
+            obj.datetime=datetime;
+
+            console.log(obj.name);
+            console.log(obj.datetime);
+
+            localStorage.setItem(userEmail.value, JSON.stringify(obj));
+            window.open("home_screen.html");
+        }
         
     }else{
         alert('Error on login');
