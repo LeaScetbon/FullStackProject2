@@ -13,7 +13,9 @@ function Hi(){
 //cookies
 document.cookie = "username=scetbonlea@gmail.com; expires=Thu, 5 Jan 2023 12:00:00 UTC";
 console.log(document.cookie);
-console.log(navigator.cookieEnabled)
+console.log(navigator.cookieEnabled);
+
+
 function setCookie(name, value, daysToLive) {
   const date = new Date();
   date.setTime(date.getTime() + (daysToLive * 24 * 60 * 60 * 1000));
