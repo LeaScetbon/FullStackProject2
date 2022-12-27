@@ -1,11 +1,16 @@
 
 body {
 	background: #222;
+	background-image: url('https://w0.peakpx.com/wallpaper/404/386/HD-wallpaper-sunset-on-mountains-minimal-art-sunset-mountains-minimalism-minimalist-artist-artwork-digital-art-deviantart.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 h2 {
-	color: #666;
+	color: rgb(0, 0, 0);
 	font-family: monospace;
 	text-align: center;
+	font-weight: bold;
 }
 .background {
 	table-layout: fixed;
@@ -15,11 +20,11 @@ h2 {
 	padding: 0;
 }
 .lava, .actor {
-	background: #e55;
+	background: rgb(255, 34, 0);
 }
 .wall {
-	background: #444;
-	border: solid 3px #333;
+	background: rgb(104, 43, 0);
+	border: solid 3px rgb(14, 14, 14);
 	box-sizing: content-box;
 }
 .actor {
@@ -30,11 +35,11 @@ h2 {
 	border-radius: 50%;
 }
 .player {
-	background: #335699;
+	background: #ffffff;
 	box-shadow: none;
 }
 .lost .player {
-	background: rgb(160, 64, 64);
+	background: rgb(16, 6, 6);
 }
 .won .player {
 	background: green;

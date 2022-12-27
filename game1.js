@@ -42,23 +42,23 @@ window.onload = function() {
              "                                                                                ",
              "                                                                                ",
              "                                                                                ",
+             "                                                   o        o                   ",
+             "                                              o                                 ",
+             "                                                   xxx     xxxx                 ",
+             "                                             xxx                                ",
              "                                                                                ",
-             "                                                                  xxx           ",
-             "                                                   xx      xx    xx!xx          ",
-             "                                    o o      xx                  x!!!x          ",
-             "                                                                 xx!xx          ",
-             "                                   xxxxx                          xvx           ",
-             "                                                                            xx  ",
-             "  xx                                      o o                                x  ",
+             "                                         xxx                                    ",
+             "                                                                                ",
+             "  xx                               o o                                       x  ",
              "  x                     o                                                    x  ",
-             "  x                                      xxxxx                             o x  ",
-             "  x          xxxx       o                                                    x  ",
-             "  x  @       x  x                                                xxxxx       x  ",
-             "  xxxxxxxxxxxx  xxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxx     xxxxxxx   xxxxxxxxx  ",
-             "                              x   x                  x     x                    ",
-             "                              x!!!x                  x!!!!!x                    ",
-             "                              x!!!x                  x!!!!!x                    ",
-             "                              xxxxx                  xxxxxxx                    ",
+             "  x                               xxxxx                                    o x  ",
+             "  x                     o                                                    x  ",
+             "  x  @                                                                       x  ",
+             "  xxxxxxxx      xxxxxxxxxxxxxxx                                   xxxx   xxxxx  ",
+             "                              x                                   x             ",
+             "                              x!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!x             ",
+             "                              x!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!x             ",
+             "                              xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx             ",
              "                                                                                ",
              "                                                                                "],
             ["                                      x!!x                        xxxxxxx                                    x!x  ",
@@ -200,7 +200,7 @@ window.onload = function() {
           
           function Player(pos) {
               this.pos = pos.plus(new Vector(0, -.5));  //position in the start
-              this.size = new Vector(.5, 1);  //largeur,longeur
+              this.size = new Vector(.7, 1);  //largeur,longeur
               this.speed = new Vector(0, 0);
           }
           Player.prototype.type = "player";
@@ -221,7 +221,7 @@ window.onload = function() {
           
           function Coin(pos) {
               this.basePos = this.pos = pos;
-              this.size = new Vector(.6, .6);
+              this.size = new Vector(.7, .7);
               // take a look back
               this.wobble = Math.random() * Math.PI * 2;
           }
