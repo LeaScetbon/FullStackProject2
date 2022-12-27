@@ -17,7 +17,27 @@ function store(){
     var lowerCaseLetters = /[a-z]/g;
     var upperCaseLetters = /[A-Z]/g;
     var numbers = /[0-9]/g;
-    
+   
+    for(let key in localStorage){
+        if(key.includes('@')){
+            let user=JSON.parse(window.localStorage.getItem(key)).name;
+            console.log(user);
+            if(user==name.value){
+                alert('This name is already in use');
+                return false;
+            }
+        }
+    }
+
+    for(let key in localStorage){
+        if(key.includes('@')){
+            console.log(key);
+            if(key==email.value){
+                alert('This email is already registered');
+                return false;
+            }
+        }
+    }
 
     if(name.value.length == 0){
         alert('Please fill in name');
@@ -39,8 +59,7 @@ function store(){
 
     }else if(pw.value!=repeatpw.value){
         alert('passwords do not match');
-    }
-    else{
+    }else{
         var newDate = new Date();
         var datetime =newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
         console.log(datetime);
@@ -76,11 +95,11 @@ function check(){
     var obj=JSON.parse(window.localStorage.getItem(userEmail.value));
     console.log(obj);
 
-    var userRemember = document.getElementById("rememberMe");
+    // var userRemember = document.getElementById("rememberMe");
 
-    console.log(userEmail.value);
-    console.log(userPw.value);
-    console.log(obj);
+    // console.log(userEmail.value);
+    // console.log(userPw.value);
+    // console.log(obj);
 
     if(userEmail.value != 'undefined' && obj!=null){
         if( userPw.value == obj.pw ){

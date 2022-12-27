@@ -41,7 +41,7 @@ function score_platformer(){
         }else{
         document.write(`${temp.name}: ${temp.scorePlatformer} `+"<br>");}
     });
-
+    document.write('<br>');
     document.write('</center>');
 }
 
