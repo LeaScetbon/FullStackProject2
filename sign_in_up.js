@@ -1,9 +1,4 @@
 
-
-
-
-  
-  
 // let newObject = window.localStorage.getItem("myObject");
 // console.log(JSON.parse(newObject));
 
@@ -86,7 +81,6 @@ function check(){
     //var storedName = localStorage.getItem('name');
     //var storedPw = localStorage.getItem('pw');
 
-
     var userEmail = document.getElementById('userMail');
     var userPw = document.getElementById('userPw');
 
@@ -117,7 +111,9 @@ function check(){
             console.log(obj.datetime);
 
             localStorage.setItem(userEmail.value, JSON.stringify(obj));
-            window.open("home_screen.html");
+            doc=window.open("home_screen.html");
+            doc.write(checkCookie());
+
         }
         
     }else{
