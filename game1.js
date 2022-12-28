@@ -227,10 +227,12 @@ window.onload = function() {
           }
           Coin.prototype.type = "coin";
           
+          // To find out whether a level is finished
           Level.prototype.isFinished = function() {
             return this.status != null && this.finishDelay < 0;
           };
           
+          //build the grid
           //construit le niveau(place les elements)
           function Level(plan) {
               this.width = plan[0].length;
@@ -261,6 +263,7 @@ window.onload = function() {
                   }
                   this.grid.push(gridLine);
               }
+               // store the player Actor object
               this.player = this.actors.filter(function(actor) {
                   return actor.type === "player"
               })[0];	
@@ -274,11 +277,23 @@ window.onload = function() {
               return elem;
           }
           
+          //DOMDisplay object
+
+          // A display object displays a given level, encapsulating of the drawing code.
+          // This `DOMDisplay` object uses simple DOM elements to show the level.
+
+          // It is created by giving it a parent element to which it should append itself and a level object.
+
           function DOMDisplay(parent, level) {
               this.wrap = parent.appendChild(element("div", "game"));
               this.level = level;
-              
+
+              // The level’s background, which never changes, is drawn once.
+
               this.wrap.appendChild(this.drawBackground());
+              // The actors are redrawn every time the display is updated. 
+              // The `actorLayer` property will be used by `drawFrame` to track the element that holds 
+              // the actors so that they can be easily removed and replaced.
               this.actorLayer = null;
               this.drawFrame();
           }
@@ -286,7 +301,10 @@ window.onload = function() {
           
           var scale = 15;
           
-          
+          // The background is drawn as a `<table>` element. This nicely corresponds to the structure 
+          // of the grid property in the level—
+          // each row of the grid is turned into a table row (`<tr>` element). 
+          // The strings in the grid are used as class names for the table cell (`<td>`) elements.
           DOMDisplay.prototype.drawBackground = function() {
               var table = element("table", "background");
               table.style.width = this.level.width * scale + "px";
@@ -300,7 +318,11 @@ window.onload = function() {
               });
               return table;
           };
-          
+
+
+          // We draw each actor by creating a DOM element for it and setting that element’s position 
+          // and size based on the actor’s properties. 
+          // The values have to be multiplied by scale to go from game units to pixels.
           DOMDisplay.prototype.drawActors = function() {
               var wrap = element("div");
               this.level.actors.forEach(function(actor) {
@@ -313,6 +335,8 @@ window.onload = function() {
               return wrap;
           }
           
+          //update l'affichage. dabord remove les anciens graphics
+          //et apres il les remet dans leur nouvelle position
           DOMDisplay.prototype.drawFrame = function() {
               if (this.actorLayer)
                   this.wrap.removeChild(this.actorLayer);
@@ -321,8 +345,10 @@ window.onload = function() {
               this.scrollPlayerIntoView();
           };
           
-          
-          // clear it later
+          // il garantit que si le niveau dépasse de la fenêtre,
+          // nous faisons défiler cette fenêtre pour nous assurer que le joueur est près de son centre.
+          // Dans cette méthode, nous trouvons la position du joueur et mettons à jour la position de défilement de l'élément d'emballage.
+
           DOMDisplay.prototype.scrollPlayerIntoView = function() {
             var width = this.wrap.clientWidth;
             var height = this.wrap.clientHeight;
@@ -346,16 +372,20 @@ window.onload = function() {
               this.wrap.scrollTop = center.y + margin - height;
           };
           
+          // To clear a displayed level, to be used when the game moves to the next level or resets a level.
           DOMDisplay.prototype.clear = function() {
               this.wrap.parentNode.removeChild(this.wrap);
           };
           
+          // To tell whether a rectangle (specified by a position and a size) 
+          //overlaps with any nonempty space on the background grid
           Level.prototype.obstacleAt = function(pos, size) {
             var xStart = Math.floor(pos.x);
             var xEnd = Math.ceil(pos.x + size.x);
             var yStart = Math.floor(pos.y);
             var yEnd = Math.ceil(pos.y + size.y);
           
+             // If the body sticks out of the level, we always return "wall" for the sides and top
             if (xStart < 0 || xEnd > this.width || yStart < 0)
               return "wall";
             if (yEnd > this.height)
@@ -368,6 +398,7 @@ window.onload = function() {
             }
           };
           
+          // Handle the collisions between the player and other dynamic actors.
           Level.prototype.actorAt = function(actor) {
             for (var i = 0; i < this.actors.length; i++) {
               var other = this.actors[i];
@@ -382,11 +413,14 @@ window.onload = function() {
           
           var maxStep = 0.05;
           
-
+          // Gives all actors in the level a chance to move.
+          // `step`: the time step in seconds(nb de sec ou on presse la key)
+          // `keys`: contains the info about the arrow kets pressed(la touche sur le clavier)
           Level.prototype.animate = function(step, keys) {
             if (this.status != null)
               this.finishDelay -= step;
           
+          // cut the time step into suitably small pieces, ensuring that step is not to large
             while (step > 0) {
               var thisStep = Math.min(step, maxStep);
               this.actors.forEach(function(actor) {
@@ -470,7 +504,7 @@ window.onload = function() {
             }
           };
           
-          //detecte quel truc il touche(si cest de la lave il perd, si cest une piece...)
+          //detecte quel object il touche(si cest de la lave il perd, si cest une piece...)
           Level.prototype.playerTouched = function(type, actor) {
             if (type == "lava" && this.status == null) {
               this.status = "lost";
@@ -505,7 +539,10 @@ window.onload = function() {
             return pressed;
           }
           
-          //fait avancer le carre 
+          //La fonction `requestAnimationFrame` anime le jeu mais
+          //son utilisation nous oblige à suivre l'heure à laquelle notre fonction
+          // a été appelée la dernière fois et à appeler à nouveau `requestAnimationFrame` après chaque image.
+          //cette fonction calcule ce temps
           function runAnimation(frameFunc) {
             var lastTime = null;
             function frame(time) {
