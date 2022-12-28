@@ -17,10 +17,9 @@ hr {
 #board {
     width: 400px;
     height: 400px;
-
-    background-color: #cdc1b5;
+ background-color: #cdc1b5 transparent;
     border: 6px solid #bbada0;
-
+    background: transparent;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
