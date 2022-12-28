@@ -118,22 +118,13 @@ function check(){
                 
             }
             else{
-                
-                    if(login_attempts==0)
+                if(login_attempts==0)
                         {
                         document.getElementById("userMail").disabled=true;
                         document.getElementById("userPw").disabled=true;
                         alert("No Login Attempts Available");
                         }
-                        else
-                        {
-                        document.getElementById("userMail").disabled=true;
-                        document.getElementById("userPw").disabled=true;
-                        var userEmail = document.getElementById('userMail');
-                        var userPw = document.getElementById('userPw');
-                        login_attempts=login_attempts-1;
-                        alert("Login Failed Now Only "+login_attempts+" Login Attempts Available");
-                        }
+                 
                 
                 }
         }
