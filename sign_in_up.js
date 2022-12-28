@@ -96,9 +96,8 @@ function check(){
     // console.log(obj);
 
     if(userEmail.value != 'undefined' && obj!=null){
-        retries=3;
-        count=0;
-        while(count < retries){
+        var login_attempts=3;
+        while (login_attempts>0){
             if( userPw.value == obj.pw ){
                 localStorage.setItem('current user', userEmail.value);
                 var newDate = new Date();
@@ -119,19 +118,31 @@ function check(){
                 
             }
             else{
-                count +=1;
-               if (count>=3){
-                    alert("Your account is blocked!")
-
+                
+                    if(login_attempts==0)
+                        {
+                        document.getElementById("userMail").disabled=true;
+                        document.getElementById("userPw").disabled=true;
+                        alert("No Login Attempts Available");
+                        }
+                        else
+                        {
+                        document.getElementById("userMail").disabled=true;
+                        document.getElementById("userPw").disabled=true;
+                        var userEmail = document.getElementById('userMail');
+                        var userPw = document.getElementById('userPw');
+                        login_attempts=login_attempts-1;
+                        alert("Login Failed Now Only "+login_attempts+" Login Attempts Available");
+                        }
+                
                 }
-                else{
-                    
-                    var userPw = document.getElementById('userPw');
-
-                }
-            }
         }
-    }else{
+    
+    
+    
+}
+    
+    else{
         alert('Error on login');
         
     }
