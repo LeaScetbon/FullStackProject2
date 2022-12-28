@@ -65,7 +65,8 @@ function store(){
             score_2048:0,
             score_Platformer:0,
             number_of_times_played_Platformer:0,
-            number_of_times_played_2048:0
+            number_of_times_played_2048:0,
+            tries_left:3
 
         };
 
@@ -94,49 +95,57 @@ function check(){
     // console.log(userEmail.value);
     // console.log(userPw.value);
     // console.log(obj);
-
-    if(userEmail.value != 'undefined' && obj!=null){
-        var login_attempts=3;
-        while (login_attempts>0){
-            if( userPw.value == obj.pw ){
-                localStorage.setItem('current user', userEmail.value);
-                var newDate = new Date();
-                var datetime = newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
-                console.log(datetime);
-                console.log(obj.name);
-                console.log(obj.name.value);
+    
+        if(userEmail.value != 'undefined' && obj!=null){
         
+        
+                if( userPw.value == obj.pw ){
+                    localStorage.setItem('current user', userEmail.value);
+                    var newDate = new Date();
+                    var datetime = newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
+                    console.log(datetime);
+                    console.log(obj.name);
+                    console.log(obj.name.value);
+            
 
-                obj.datetime=datetime;
+                    obj.datetime=datetime;
+                    obj.tries_left = 3;
+                    console.log(obj.name);
+                    console.log(obj.datetime);
 
-                console.log(obj.name);
-                console.log(obj.datetime);
-
-                localStorage.setItem(userEmail.value, JSON.stringify(obj));
-                doc=window.open("home_screen.html");
-                doc.write(checkCookie());
-                
-            }
-            else{
-                if(login_attempts==0)
-                        {
-                        document.getElementById("userMail").disabled=true;
-                        document.getElementById("userPw").disabled=true;
-                        alert("No Login Attempts Available");
-                        }
-                 
-                
+                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
+                    doc=window.open("home_screen.html");
+                    doc.write(checkCookie());
+                    
                 }
-        }
-    
-    
-    
-}
-    
-    else{
-        alert('Error on login');
+                else{
+                    if(obj.tries_left>0)
+                    {
+                    obj.tries_left = obj.tries_left -1;
+                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
+                    alert("Login Failed Now Only "+obj.tries_left+" Login Attempts Available");
+                    }
+                    else
+                    {
+                    obj.tries_left=0;
+                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
+                    alert("Your account is blocked for 30 seconds!")
+                    setTimeout(check, 10000);
+                    obj.tries_left = 3;
+                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
+                    }
+                    
+                    }
+            
+        
+        
         
     }
+        
+        else{
+            alert('Error on login');
+            
+        }
 
 }
 
