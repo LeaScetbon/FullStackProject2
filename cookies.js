@@ -32,7 +32,6 @@ function setCookie(cname,cvalue,exdays) {
       alert("Welcome again " + currentuser);
     } else {
       
-      //  user = prompt("Please enter your name:","");
        if (currentuser != "" && currentuser != null) {
          setCookie(currentuser, key, 30);
        }

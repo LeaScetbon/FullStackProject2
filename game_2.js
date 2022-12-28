@@ -6,13 +6,9 @@ var columns = 4;
 window.onload = function() {
 
     var obj=window.localStorage.getItem('current user');
-    console.log(obj);
     var newobj=JSON.parse(window.localStorage.getItem(obj));
-    console.log(newobj);
     newobj.number_of_times_played_2048+=1;
-    console.log(newobj);
     localStorage.setItem(obj, JSON.stringify(newobj));
-
     setGame();
 }
 
@@ -101,7 +97,6 @@ function slide(row) {
             newobj.score_2048=score;
             console.log(newobj);
             localStorage.setItem(obj, JSON.stringify(newobj));
-            //localStorage.setItem(`score 2048 ${localStorage.getItem('current user')}`,score);
         }
     } //[4, 0, 2]
     row = filterZero(row); //[4, 2]

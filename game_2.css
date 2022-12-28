@@ -106,3 +106,17 @@ hr {
     border-radius: 50%;
 }
 
+.parentTop{
+    background:url("images/gaming.jfif") ;
+    background: rgba(40,57,101,.9);
+  }
+
+.login-form{
+	min-height:345px;
+	position:relative;
+	perspective:1000px;
+	transform-style:preserve-3d;
+  background:url("images/gaming.jfif");;
+}
+
+  

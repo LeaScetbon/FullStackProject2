@@ -96,49 +96,49 @@ function check(){
     // console.log(userPw.value);
     // console.log(obj);
     
-        if(userEmail.value != 'undefined' && obj!=null){
-        
-        
-                if( userPw.value == obj.pw ){
-                    localStorage.setItem('current user', userEmail.value);
-                    var newDate = new Date();
-                    var datetime = newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
-                    console.log(datetime);
-                    console.log(obj.name);
-                    console.log(obj.name.value);
-            
+    if(userEmail.value != 'undefined' && obj!=null){
+    
 
-                    obj.datetime=datetime;
-                    obj.tries_left = 3;
-                    console.log(obj.name);
-                    console.log(obj.datetime);
+        if( userPw.value == obj.pw ){
+            localStorage.setItem('current user', userEmail.value);
+            var newDate = new Date();
+            var datetime = newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
+            console.log(datetime);
+            console.log(obj.name);
+            console.log(obj.name.value);
+    
 
-                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
-                    doc=window.open("home_screen.html");
-                    doc.write(checkCookie());
-                    
-                }
-                else{
-                    if(obj.tries_left>0)
-                    {
-                    obj.tries_left = obj.tries_left -1;
-                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
-                    alert("Login Failed Now Only "+obj.tries_left+" Login Attempts Available");
-                    }
-                    else
-                    {
-                    obj.tries_left=0;
-                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
-                    alert("Your account is blocked for 30 seconds!")
-                    setTimeout(check, 10000);
-                    obj.tries_left = 3;
-                    localStorage.setItem(userEmail.value, JSON.stringify(obj));
-                    }
-                    
-                    }
+            obj.datetime=datetime;
+            obj.tries_left = 3;
+            console.log(obj.name);
+            console.log(obj.datetime);
+
+            localStorage.setItem(userEmail.value, JSON.stringify(obj));
+            doc=window.open("home_screen.html");
+            doc.write(checkCookie());
             
+        }
+        else{
+            if(obj.tries_left>0)
+                {
+                obj.tries_left = obj.tries_left -1;
+                localStorage.setItem(userEmail.value, JSON.stringify(obj));
+                alert("Login Failed Now Only "+obj.tries_left+" Login Attempts Available");
+            }
+            else
+            {
+                obj.tries_left=0;
+                localStorage.setItem(userEmail.value, JSON.stringify(obj));
+                alert("Your account is blocked for 30 seconds!")
+                // setTimeout(check, 10000);
+                obj.tries_left = 3;
+                localStorage.setItem(userEmail.value, JSON.stringify(obj));
+            }
+            
+        }
         
-        
+    
+    
         
     }
         
