@@ -66,7 +66,7 @@ function store(){
             score_Platformer:0,
             number_of_times_played_Platformer:0,
             number_of_times_played_2048:0,
-            tries_left:3
+            tries_left:1
 
         };
 
@@ -129,8 +129,9 @@ function check(){
             {
                 obj.tries_left=0;
                 localStorage.setItem(userEmail.value, JSON.stringify(obj));
-                alert("Your account is blocked for 30 seconds!")
-                // setTimeout(check, 10000);
+                alert("Your account is blocked!")
+                // setTimeout(() => {obj.tries_left = 3;
+                //     localStorage.setItem(userEmail.value, JSON.stringify(obj));}, 5000);
                 obj.tries_left = 3;
                 localStorage.setItem(userEmail.value, JSON.stringify(obj));
             }
@@ -149,9 +150,6 @@ function check(){
 
 }
 
-
-  
-  
   
 
 
