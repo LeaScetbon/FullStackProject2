@@ -96,28 +96,44 @@ function check(){
     // console.log(obj);
 
     if(userEmail.value != 'undefined' && obj!=null){
-        if( userPw.value == obj.pw ){
-            localStorage.setItem('current user', userEmail.value);
-            var newDate = new Date();
-            var datetime =newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
-            console.log(datetime);
-            console.log(obj.name);
-            console.log(obj.name.value);
-    
-
-            obj.datetime=datetime;
-
-            console.log(obj.name);
-            console.log(obj.datetime);
-
-            localStorage.setItem(userEmail.value, JSON.stringify(obj));
-            doc=window.open("home_screen.html");
-            doc.write(checkCookie());
-
-        }
+        retries=3;
+        count=0;
+        while(count < retries){
+            if( userPw.value == obj.pw ){
+                localStorage.setItem('current user', userEmail.value);
+                var newDate = new Date();
+                var datetime = newDate.getDate()+'/'+newDate.getMonth()+'-'+newDate.getHours()+':'+newDate.getMinutes();
+                console.log(datetime);
+                console.log(obj.name);
+                console.log(obj.name.value);
         
+
+                obj.datetime=datetime;
+
+                console.log(obj.name);
+                console.log(obj.datetime);
+
+                localStorage.setItem(userEmail.value, JSON.stringify(obj));
+                doc=window.open("home_screen.html");
+                doc.write(checkCookie());
+                
+            }
+            else{
+                count +=1;
+               if (count>=3){
+                    alert("Your account is blocked!")
+
+                }
+                else{
+                    
+                    var userPw = document.getElementById('userPw');
+
+                }
+            }
+        }
     }else{
         alert('Error on login');
+        
     }
 
 }
