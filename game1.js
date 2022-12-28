@@ -231,6 +231,7 @@ window.onload = function() {
             return this.status != null && this.finishDelay < 0;
           };
           
+          //construit le niveau(place les elements)
           function Level(plan) {
               this.width = plan[0].length;
               this.height = plan.length;
@@ -266,6 +267,7 @@ window.onload = function() {
               this.status = this.finishDelay = null;
           }
           
+
           function element(name, className) {
               var elem = document.createElement(name);
               if(className) elem.className = className;
@@ -290,7 +292,7 @@ window.onload = function() {
               table.style.width = this.level.width * scale + "px";
               table.style.height = this.level.height * scale + "px";
               this.level.grid.forEach(function(row) {
-            var rowElement = table.appendChild(element("tr"));
+              var rowElement = table.appendChild(element("tr"));
                   rowElement.style.height = scale + "px";
                   row.forEach(function(type) {
                       rowElement.appendChild(element("td", type));
@@ -380,6 +382,7 @@ window.onload = function() {
           
           var maxStep = 0.05;
           
+
           Level.prototype.animate = function(step, keys) {
             if (this.status != null)
               this.finishDelay -= step;
@@ -393,7 +396,7 @@ window.onload = function() {
             }
           };
           
-          
+          //fonction sur la lava
           Lava.prototype.act = function(step, level) {
             var newPos = this.pos.plus(this.speed.times(step));
             if (!level.obstacleAt(newPos, this.size))
@@ -406,15 +409,17 @@ window.onload = function() {
           
           var wobbleSpeed = 8, wobbleDist = 0.07;
           
+          //fonction sur les matbeots(pieces)
           Coin.prototype.act = function(step) {
             this.wobble += step * wobbleSpeed;
             var wobblePos = Math.sin(this.wobble) * wobbleDist;
-            this.pos = this.basePos.plus(new Vector(0, wobblePos));
+            this.pos = this.basePos.plus(new Vector(0, wobblePos)); //position de la piece
           };
           
           
           var playerXSpeed = 10;
           
+          //fonction qui fait bouger sur la largeur(lenght)
           Player.prototype.moveX = function(step, level, keys) {
             this.speed.x = 0;
             if (keys.left) this.speed.x -= playerXSpeed;
@@ -432,6 +437,7 @@ window.onload = function() {
           var gravity = 30;
           var jumpSpeed = 17;
           
+          //fonction qui bouge le carre sur sa hauteur(height)
           Player.prototype.moveY = function(step, level, keys) {
             this.speed.y += step * gravity;
             var motion = new Vector(0, this.speed.y * step);
@@ -448,6 +454,7 @@ window.onload = function() {
             }
           };
           
+          //fonction qui recoit le niveau et la touche du clavier ou on appui et fait bouger le carre
           Player.prototype.act = function(step, level, keys) {
             this.moveX(step, level, keys);
             this.moveY(step, level, keys);
@@ -463,6 +470,7 @@ window.onload = function() {
             }
           };
           
+          //detecte quel truc il touche(si cest de la lave il perd, si cest une piece...)
           Level.prototype.playerTouched = function(type, actor) {
             if (type == "lava" && this.status == null) {
               this.status = "lost";
@@ -482,6 +490,7 @@ window.onload = function() {
           
           var arrowCodes = {37: "left", 38: "up", 39: "right"};
           
+          //detecte sur quelle touche on appui et avance le carre en fonction
           function trackKeys(codes) {
             var pressed = Object.create(null);
             function handler(event) {
@@ -496,6 +505,7 @@ window.onload = function() {
             return pressed;
           }
           
+          //fait avancer le carre 
           function runAnimation(frameFunc) {
             var lastTime = null;
             function frame(time) {
@@ -513,6 +523,7 @@ window.onload = function() {
           
           var arrows = trackKeys(arrowCodes);
           
+          //fonction qui montre les diff levels(qd on gagne il passe au niveau suivant)
           function runLevel(level, Display, andThen) {
             var display = new Display(document.body, level);
             runAnimation(function(step) {
@@ -527,6 +538,7 @@ window.onload = function() {
             });
           }
           
+          //demarre le jeu
           function runGame(plans, Display) {
             function startLevel(n) {
               var obj=window.localStorage.getItem('current user');       
